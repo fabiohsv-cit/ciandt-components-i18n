@@ -1,0 +1,24 @@
+{
+  "name": "ciandt-components-i18n",
+  "version": "0.0.1",
+  "homepage": "https://github.com/fabiohsv-cit/ciandt-components-i18n",
+  "authors": [
+    "Fábio Henrique da Silva Viana <fabiohsv@ciandt.com>"
+  ],
+  "description": "i18n component written in angularjs",
+  "main": ["i18n.js"],
+  "dependencies": {
+	"ciandt-components-dialogs": "*"
+  },
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angular",
+    "i18n",
+	"locale",
+	"localization",
+	"internacionalization"
+  ],
+  "license": "MIT"
+}
