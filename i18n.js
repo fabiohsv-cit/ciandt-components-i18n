@@ -18,7 +18,7 @@ define(['angular'], function (app) {
                     return localize.url = value, localize.initLocalizedResources();
                 },
                 buildUrl: function () {
-                    return localize.language || (localize.language = ($window.navigator.userLanguage || $window.navigator.language).toLowerCase(), localize.language = localize.language.split("-")[0]), "app/common/i18n/resources_" + localize.language + ".js";
+                    return localize.language || (localize.language = ($window.navigator.userLanguage || $window.navigator.language).toLowerCase(), localize.language = localize.language.split("-")[0]), "app/common/i18n/resources_" + localize.language + ".json";
                 },
                 initLocalizedResources: function () {
                     var url;
