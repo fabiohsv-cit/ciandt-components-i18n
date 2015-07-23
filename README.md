@@ -97,7 +97,7 @@ i18n component written in angularjs
    <button title="Press to save" i18n>Save</button>
    
    if language equal 'pt' will be displayed:
-   <button title="Press to save">Salvar</button>
+   <button title="Pressione para salvar">Salvar</button>
    
    Or like a filter:
    
