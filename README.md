@@ -21,7 +21,9 @@ i18n component written in angularjs
    ```
 
 * Requirements:
+
    - This component uses angular-dynamic-locale to correct load the $locale after bootstrap.
+
 ======
 
 ### How To Use
