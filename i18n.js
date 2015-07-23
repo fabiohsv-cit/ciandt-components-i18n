@@ -165,51 +165,51 @@ define(['angular', 'angular-dynamic-locale'], function () {
                 return value;
             }
         }
-    }]).directive("i18n", ["ciandt.components.i18n.Localize", function (localize) {
+    }]).directive("i18n", ["ciandt.components.i18n.Localize", '$interpolate', function (localize, $interpolate) {
         var i18nDirective;
         return i18nDirective = {
             restrict: "EA",
-            update: function (ele, attrs) {
+            update: function (scope, ele, attrs) {
                 var i18n;
 
                 // altera body do elemento caso não sejam tags html, se for apenas texto
                 if (ele.html().trim() == ele.text().trim()) {
                     var text = ele.text().trim();
                     if (attrs.i18n) {
-                        ele.text(localize.get(attrs.i18n));
+                        ele.text(localize.get($interpolate(attrs.i18n)(scope)));
                     } else if (text) {
                         i18n = text;
-                        ele.text(localize.get(i18n));
+                        ele.text(localize.get($interpolate(i18n)(scope)));
                     }
                 }
 
                 // altera placeholder
                 if (attrs.placeholder) {
                     if (attrs.i18n) {
-                        ele.attr("placeholder", localize.get(attrs.i18n));
+                        ele.attr("placeholder", localize.get($interpolate(attrs.i18n)(scope)));
                     } else {
                         i18n = attrs.placeholder;
-                        ele.attr("placeholder", localize.get(attrs.placeholder));
+                        ele.attr("placeholder", localize.get($interpolate(i18n)(scope)));
                     }
                 }
 
                 // altera title
                 if (attrs.title) {
                     if (attrs.i18n) {
-                        ele.attr("title", localize.get(attrs.i18n));
+                        ele.attr("title", localize.get($interpolate(attrs.i18n)(scope)));
                     } else {
                         i18n = attrs.title;
-                        ele.attr("title", localize.get(attrs.title));
+                        ele.attr("title", localize.get($interpolate(i18n)(scope)));
                     }
                 }
 
                 // altera alt
                 if (attrs.alt) {
                     if (attrs.i18n) {
-                        ele.attr("alt", localize.get(attrs.i18n));
+                        ele.attr("alt", localize.get($interpolate(attrs.i18n)(scope)));
                     } else {
                         i18n = attrs.alt;
-                        ele.attr("alt", localize.get(attrs.alt));
+                        ele.attr("alt", localize.get($interpolate(i18n)(scope)));
                     }
                 }
 
@@ -219,11 +219,11 @@ define(['angular', 'angular-dynamic-locale'], function () {
             },
             link: function (scope, ele, attrs) {
                 var observe = function (value) {
-                    i18nDirective.update(ele, attrs);
+                    i18nDirective.update(scope, ele, attrs);
                 };
 
                 if (ele.html().trim() == ele.text().trim()) {
-                    i18nDirective.update(ele, attrs);
+                    i18nDirective.update(scope, ele, attrs);
                 }
 
                 if (attrs.title) {
@@ -243,7 +243,7 @@ define(['angular', 'angular-dynamic-locale'], function () {
                 }
 
                 scope.$on("localizeResourcesUpdated", function () {
-                    i18nDirective.update(ele, attrs);
+                    i18nDirective.update(scope, ele, attrs);
                 });
             }
         };
