@@ -214,6 +214,7 @@ define(['angular', 'angular-dynamic-locale'], function () {
                 }
 
                 if (i18n) {
+					// TODO Viana: necessário criar um atributo pra body text, placeholder, title e alt
                     ele.attr("i18n", i18n);
                 }
             },

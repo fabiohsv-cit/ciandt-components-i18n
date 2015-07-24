@@ -22,7 +22,7 @@ i18n component written in angularjs
 
 * Requirements:
 
-   - This component uses angular-dynamic-locale to correct load the $locale after bootstrap.
+   - This component uses angular-dynamic-locale to correctly load the $locale after bootstrap.
 
 ======
 
@@ -31,7 +31,7 @@ i18n component written in angularjs
 1. **Configuring the default language, supported languages and angular locale path**
    ```javascript
    app.config(['ciandt.components.i18n.LocalizeConfig', function(LocalizeConfig){
-     LocalizeConfig.defaultLanguage = 'en'; // default is pt
+     LocalizeConfig.defaultLanguage = 'en'; // default is en
      LocalizeConfig.supportedLanguage = ['en', 'pt']; // detault is en and pt
      LocalizeConfig.localePath = 'assets/libs/angular-i18n/angular-locale_{{locale}}.js'; // this is the default value
    }]);
@@ -40,10 +40,10 @@ i18n component written in angularjs
 2. **Add resources bundle**
    ```javascript
    app.run(['ciandt.components.i18n.Localize', function(Localize){
-     Localize.addResource('app/common/i18n/resources_{lang}.json'); // the lang will be replaced to the language choice
+     Localize.addResource('app/common/i18n/resources_{lang}.json'); // the lang will be replaced with the chosen language
    }]);
    ```
-   - the resources file should be the format below:
+   - the resources file should be in the format below:
    ```json
 	{
 		"resources": {
@@ -57,12 +57,12 @@ i18n component written in angularjs
 			"press button below to save": "Pressione o botão abaixo para salvar"
 		},
 		"regexResources": {
-			"Would you like to adding the product (\w+) in your cart?": "Gostaria de adicionar o produto $1 em seu carrinho de compras?"
+			"Would you like to add the product (\w+) to your cart?": "Gostaria de adicionar o produto $1 em seu carrinho de compras?"
 		}
 	}
    ```
-   - the keys in resources shold be in lower case
-   - the regexResources should be used to dynamic keys and the resources should be used to static keys
+   - the keys in resources should be in lower case
+   - the regexResources should be used to store dynamic keys and the resources to store static keys
 
 3. **Get and change language**
    ```javascript
@@ -74,7 +74,7 @@ i18n component written in angularjs
      ...
    }]);
    ```
-   - if moment component is used the method setLanguage will change moment locale
+   - if moment.js component is used the method setLanguage will change its locale
    - if you use angular filters, like date and currency, the $locale will be changed and the format will work
 
 3. **Translate**
@@ -83,7 +83,7 @@ i18n component written in angularjs
      ...
 	 Localize.setLanguage('pt');
 	 ...
-     alert(Localize.get('Would you like to adding the product iPad in your cart?')); // it will be displayed "Gostaria de adicionar o produto iPad em seu carrinho de compras?"
+     alert(Localize.get('Would you like to add the product iPad in your cart?')); // it will be displayed "Gostaria de adicionar o produto iPad em seu carrinho de compras?"
      ...
    }]);
    ```
@@ -103,4 +103,4 @@ i18n component written in angularjs
    
    <td>{{value | i18n}}</td>
    ```
-   - this component does replace in attributes alt, title, placeholder and text body
+   - this component replace attributes alt, title, placeholder and text body
