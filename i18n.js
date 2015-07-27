@@ -1,6 +1,8 @@
 ﻿"use strict";
 
 define(['angular', 'angular-dynamic-locale'], function () {
+    var tmhDynamicLocaleProviderRef;
+
     angular.module("ciandt.components.i18n", ['ciandt.components.utilities', 'tmh.dynamicLocale']).constant('ciandt.components.i18n.LocalizeConfig', {
         defaultLanguage: 'pt',
         supportedLanguage: ['pt', 'en'],
@@ -62,6 +64,11 @@ define(['angular', 'angular-dynamic-locale'], function () {
                 }
             });
 
+            // FIXME viana: problemas para carregar script quando se usa de-para de versão com cache bust
+            if (factory && factory.getFileVersion) {
+                tmhDynamicLocaleProviderRef.localeLocationPattern(factory.getFileVersion(LocalizeConfig.localePath.replace(/{{locale}}/g, lang)));
+            }
+
             tmhDynamicLocale.set(lang);
         };
 
@@ -83,7 +90,7 @@ define(['angular', 'angular-dynamic-locale'], function () {
             if (lang != LocalizeConfig.defaultLanguage) {
                 var _resources = [];
                 angular.forEach(res, function (resource) {
-                    _resources.push('json!' + resource.replace(/{lang}/g, lang));
+                    _resources.push('json!' + (factory ? factory.getFileVersion(resource.replace(/{lang}/g, lang)) : resource.replace(/{lang}/g, lang)));
                 });
 
                 require(_resources, function () {
@@ -214,7 +221,6 @@ define(['angular', 'angular-dynamic-locale'], function () {
                 }
 
                 if (i18n) {
-					// TODO Viana: necessário criar um atributo pra body text, placeholder, title e alt
                     ele.attr("i18n", i18n);
                 }
             },
@@ -253,6 +259,7 @@ define(['angular', 'angular-dynamic-locale'], function () {
             return localize.get(value);
         }
     }]).config(['tmhDynamicLocaleProvider', 'ciandt.components.i18n.LocalizeConfig', function (tmhDynamicLocaleProvider, LocalizeConfig) {
+        tmhDynamicLocaleProviderRef = tmhDynamicLocaleProvider;
         tmhDynamicLocaleProvider.localeLocationPattern(LocalizeConfig.localePath);
     }]);
 });
