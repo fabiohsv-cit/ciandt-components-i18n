@@ -177,51 +177,45 @@ define(['angular', 'angular-dynamic-locale'], function () {
         return i18nDirective = {
             restrict: "EA",
             update: function (scope, ele, attrs) {
-                var i18n;
-
                 // altera body do elemento caso não sejam tags html, se for apenas texto
                 if (ele.html().trim() == ele.text().trim()) {
                     var text = ele.text().trim();
-                    if (attrs.i18n) {
-                        ele.text(localize.get($interpolate(attrs.i18n)(scope)));
+                    if (ele.attr("i18n-body")) {
+                        ele.text(localize.get($interpolate(ele.attr("i18n-body"))(scope)));
                     } else if (text) {
-                        i18n = text;
-                        ele.text(localize.get($interpolate(i18n)(scope)));
+                        ele.attr("i18n-body", text);
+                        ele.text(localize.get($interpolate(text)(scope)));
                     }
                 }
 
                 // altera placeholder
                 if (attrs.placeholder) {
-                    if (attrs.i18n) {
-                        ele.attr("placeholder", localize.get($interpolate(attrs.i18n)(scope)));
+                    if (ele.attr("i18n-placeholder")) {
+                        ele.attr("placeholder", localize.get($interpolate(ele.attr("i18n-placeholder"))(scope)));
                     } else {
-                        i18n = attrs.placeholder;
-                        ele.attr("placeholder", localize.get($interpolate(i18n)(scope)));
+                        ele.attr("i18n-placeholder", attrs.placeholder);
+                        ele.attr("placeholder", localize.get($interpolate(attrs.placeholder)(scope)));
                     }
                 }
 
                 // altera title
                 if (attrs.title) {
-                    if (attrs.i18n) {
-                        ele.attr("title", localize.get($interpolate(attrs.i18n)(scope)));
+                    if (ele.attr("i18n-title")) {
+                        ele.attr("title", localize.get($interpolate(ele.attr("i18n-title"))(scope)));
                     } else {
-                        i18n = attrs.title;
-                        ele.attr("title", localize.get($interpolate(i18n)(scope)));
+                        ele.attr("i18n-title", attrs.title);
+                        ele.attr("title", localize.get($interpolate(attrs.title)(scope)));
                     }
                 }
 
                 // altera alt
                 if (attrs.alt) {
-                    if (attrs.i18n) {
-                        ele.attr("alt", localize.get($interpolate(attrs.i18n)(scope)));
+                    if (ele.attr("i18n-alt")) {
+                        ele.attr("alt", localize.get($interpolate(ele.attr("i18n-alt"))(scope)));
                     } else {
-                        i18n = attrs.alt;
-                        ele.attr("alt", localize.get($interpolate(i18n)(scope)));
+                        ele.attr("i18n-alt", attrs.alt);
+                        ele.attr("alt", localize.get($interpolate(attrs.alt)(scope)));
                     }
-                }
-
-                if (i18n) {
-                    ele.attr("i18n", i18n);
                 }
             },
             link: function (scope, ele, attrs) {
