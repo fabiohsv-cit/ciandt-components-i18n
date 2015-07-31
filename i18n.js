@@ -3,11 +3,11 @@
 define(['angular', 'angular-dynamic-locale'], function () {
     var tmhDynamicLocaleProviderRef;
 
-    angular.module("ciandt.components.i18n", ['ciandt.components.utilities', 'tmh.dynamicLocale']).constant('ciandt.components.i18n.LocalizeConfig', {
+    angular.module("jedi.i18n", ['jedi.utilities', 'tmh.dynamicLocale']).constant('jedi.i18n.LocalizeConfig', {
         defaultLanguage: 'pt',
         supportedLanguage: ['pt', 'en'],
         localePath: 'assets/libs/angular-i18n/angular-locale_{{locale}}.js'
-    }).factory("ciandt.components.i18n.Localize", ['ciandt.components.utilities.Utilities', '$rootScope', 'ciandt.components.i18n.LocalizeConfig', '$log', 'tmhDynamicLocale', function (utilities, $rootScope, LocalizeConfig, $log, tmhDynamicLocale) {
+    }).factory("jedi.i18n.Localize", ['jedi.utilities.Utilities', '$rootScope', 'jedi.i18n.LocalizeConfig', '$log', 'tmhDynamicLocale', function (utilities, $rootScope, LocalizeConfig, $log, tmhDynamicLocale) {
         var userLang;
         try {
             userLang = JSON.parse(localStorage.getItem('i18n_lang'));
@@ -65,8 +65,8 @@ define(['angular', 'angular-dynamic-locale'], function () {
             });
 
             // FIXME viana: problemas para carregar script quando se usa de-para de versão com cache bust
-            if (factory && factory.getFileVersion) {
-                tmhDynamicLocaleProviderRef.localeLocationPattern(factory.getFileVersion(LocalizeConfig.localePath.replace(/{{locale}}/g, lang)));
+            if (jd && jd.factory && jd.factory.getFileVersion) {
+                tmhDynamicLocaleProviderRef.localeLocationPattern(jd.factory.getFileVersion(LocalizeConfig.localePath.replace(/{{locale}}/g, lang)));
             }
 
             tmhDynamicLocale.set(lang);
@@ -90,7 +90,7 @@ define(['angular', 'angular-dynamic-locale'], function () {
             if (lang != LocalizeConfig.defaultLanguage) {
                 var _resources = [];
                 angular.forEach(res, function (resource) {
-                    _resources.push('json!' + (factory ? factory.getFileVersion(resource.replace(/{lang}/g, lang)) : resource.replace(/{lang}/g, lang)));
+                    _resources.push('json!' + (jd && jd.factory ? jd.factory.getFileVersion(resource.replace(/{lang}/g, lang)) : resource.replace(/{lang}/g, lang)));
                 });
 
                 require(_resources, function () {
@@ -146,6 +146,10 @@ define(['angular', 'angular-dynamic-locale'], function () {
                 return language;
             },
 
+            getDefaultLanguage: function () {
+                return LocalizeConfig.defaultLanguage;
+            },
+
             get: function (value) {
                 // se tem value e linguagem for diferente da default, então traduz
                 // se for linguagem default nao precisa traduzir
@@ -172,7 +176,7 @@ define(['angular', 'angular-dynamic-locale'], function () {
                 return value;
             }
         }
-    }]).directive("i18n", ["ciandt.components.i18n.Localize", '$interpolate', function (localize, $interpolate) {
+    }]).directive("jdI18n", ["jedi.i18n.Localize", '$interpolate', function (localize, $interpolate) {
         var i18nDirective;
         return i18nDirective = {
             restrict: "EA",
@@ -239,8 +243,8 @@ define(['angular', 'angular-dynamic-locale'], function () {
                     attrs.$observe('placeholder', observe);
                 }
 
-                if (attrs.i18n) {
-                    attrs.$observe('i18n', observe);
+                if (attrs.jdI18n) {
+                    attrs.$observe('jdI18n', observe);
                 }
 
                 scope.$on("localizeResourcesUpdated", function () {
@@ -248,11 +252,11 @@ define(['angular', 'angular-dynamic-locale'], function () {
                 });
             }
         };
-    }]).filter('i18n', ['ciandt.components.i18n.Localize', function (localize) {
+    }]).filter('jdI18n', ['jedi.i18n.Localize', function (localize) {
         return function (value) {
             return localize.get(value);
         }
-    }]).config(['tmhDynamicLocaleProvider', 'ciandt.components.i18n.LocalizeConfig', function (tmhDynamicLocaleProvider, LocalizeConfig) {
+    }]).config(['tmhDynamicLocaleProvider', 'jedi.i18n.LocalizeConfig', function (tmhDynamicLocaleProvider, LocalizeConfig) {
         tmhDynamicLocaleProviderRef = tmhDynamicLocaleProvider;
         tmhDynamicLocaleProvider.localeLocationPattern(LocalizeConfig.localePath);
     }]);

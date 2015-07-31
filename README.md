@@ -1,4 +1,4 @@
-# ciandt-components-i18n
+# ng-jedi-i18n
 i18n component written in angularjs
 
 ### Install
@@ -6,18 +6,18 @@ i18n component written in angularjs
 * Install the dependency:
 
    ```shell
-   bower install ciandt-components-i18n --save
+   bower install ng-jedi-i18n --save
    ```
 * Add i18n.js to your code:
 
    ```html
-   <script src='assets/libs/ciandt-components-i18n/i18n.js'></script>
+   <script src='assets/libs/ng-jedi-i18n/i18n.js'></script>
    ```
    - note that the base directory used was assets/libs, you should change bower_components to assets/libs or move from bower_components to assets/libs with grunt.
 * Include module dependency:
 
    ```javascript
-   angular.module('yourApp', ['ciandt.components.i18n']);
+   angular.module('yourApp', ['jedi.i18n']);
    ```
 
 * Requirements:
@@ -30,7 +30,7 @@ i18n component written in angularjs
 
 1. **Configuring the default language, supported languages and angular locale path**
    ```javascript
-   app.config(['ciandt.components.i18n.LocalizeConfig', function(LocalizeConfig){
+   app.config(['jedi.i18n.LocalizeConfig', function(LocalizeConfig){
      LocalizeConfig.defaultLanguage = 'en'; // default is en
      LocalizeConfig.supportedLanguage = ['en', 'pt']; // detault is en and pt
      LocalizeConfig.localePath = 'assets/libs/angular-i18n/angular-locale_{{locale}}.js'; // this is the default value
@@ -39,7 +39,7 @@ i18n component written in angularjs
 
 2. **Add resources bundle**
    ```javascript
-   app.run(['ciandt.components.i18n.Localize', function(Localize){
+   app.run(['jedi.i18n.Localize', function(Localize){
      Localize.addResource('app/common/i18n/resources_{lang}.json'); // the lang will be replaced with the chosen language
    }]);
    ```
@@ -66,7 +66,7 @@ i18n component written in angularjs
 
 3. **Get and change language**
    ```javascript
-   app.controller(['ciandt.components.i18n.Localize', function(Localize){
+   app.controller(['jedi.i18n.Localize', function(Localize){
      ...
      var lang = Localize.getLanguage();
      ...
@@ -79,7 +79,7 @@ i18n component written in angularjs
 
 3. **Translate**
 	```javascript
-   app.controller(['ciandt.components.i18n.Localize', function(Localize){
+   app.controller(['jedi.i18n.Localize', function(Localize){
      ...
 	 Localize.setLanguage('pt');
 	 ...
@@ -90,17 +90,17 @@ i18n component written in angularjs
    ```html
    Like a tag:
    
-   <span><i18n>press button below to save</i18n></span>
+   <span><jd-i18n>press button below to save</jd-i18n></span>
    
    Or like a attribute:
    
-   <button title="Press to save" i18n>Save</button>
+   <button title="Press to save" jd-i18n>Save</button>
    
    if language equal 'pt' will be displayed:
    <button title="Pressione para salvar">Salvar</button>
    
    Or like a filter:
    
-   <td>{{value | i18n}}</td>
+   <td>{{value | jdI18n}}</td>
    ```
    - this component replace attributes alt, title, placeholder and text body
