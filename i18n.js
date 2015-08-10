@@ -33,7 +33,7 @@ define(['angular', 'angular-dynamic-locale'], function () {
         var regexDictionary = {};
 
         var onfinishLoadResources = function (lang) {
-            $rootScope.$broadcast("localizeResourcesUpdated");
+            $rootScope.$broadcast("jedi.i18n.LanguageChanged", lang);
         };
 
         var onfinishChangeLanguage = function (lang, onfinish) {
@@ -229,6 +229,13 @@ define(['angular', 'angular-dynamic-locale'], function () {
 
                 if (ele.html().trim() == ele.text().trim()) {
                     i18nDirective.update(scope, ele, attrs);
+                    scope.$watch(function(){
+                        if (ele.attr("i18n-body")) {
+                            return $interpolate(ele.attr("i18n-body"))(scope);
+                        } else {
+                            return undefined;
+                        }
+                    }, observe);
                 }
 
                 if (attrs.title) {
@@ -243,13 +250,7 @@ define(['angular', 'angular-dynamic-locale'], function () {
                     attrs.$observe('placeholder', observe);
                 }
 
-                if (attrs.jdI18n) {
-                    attrs.$observe('jdI18n', observe);
-                }
-
-                scope.$on("localizeResourcesUpdated", function () {
-                    i18nDirective.update(scope, ele, attrs);
-                });
+                scope.$on("jedi.i18n.LanguageChanged", observe);
             }
         };
     }]).filter('jdI18n', ['jedi.i18n.Localize', function (localize) {
