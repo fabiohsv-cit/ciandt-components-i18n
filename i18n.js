@@ -1,6 +1,18 @@
 ﻿"use strict";
 
-define(['angular', 'angular-dynamic-locale'], function () {
+(function (factory) {
+    if (typeof define === 'function') {
+        define(['angular',
+                'angular-dynamic-locale'], factory);
+    } else {
+        if (typeof module !== "undefined" && typeof exports !== "undefined" && module.exports === exports){
+            module.exports = 'jedi.i18n';
+            require('angular-dynamic-locale');
+        }
+        return factory();
+    }
+}(function() {
+
     var tmhDynamicLocaleProviderRef;
 
     angular.module("jedi.i18n", ['jedi.utilities', 'tmh.dynamicLocale']).constant('jedi.i18n.LocalizeConfig', {
@@ -261,4 +273,4 @@ define(['angular', 'angular-dynamic-locale'], function () {
         tmhDynamicLocaleProviderRef = tmhDynamicLocaleProvider;
         tmhDynamicLocaleProvider.localeLocationPattern(LocalizeConfig.localePath);
     }]);
-});
+}));
