@@ -1,4 +1,4 @@
-# ng-jedi-i18n
+# [ng-jedi-i18n](https://github.com/jediproject/ng-jedi-i18n)
 [i18n](https://docs.angularjs.org/guide/i18n) component.
 ###### Written in [AngularJs](https://angularjs.org/)
 
@@ -62,9 +62,9 @@
       "name": "Nome",
       "save": "Salvar",
       "password": "Senha",
-      "user": "Usu·rio",
+      "user": "Usu√°rio",
       "press to save": "Pressione para salvar",
-      "press button below to save": "Pressione o bot„o abaixo para salvar"
+      "press button below to save": "Pressione o bot√£o abaixo para salvar"
     },
     "regexResources": {
       "Would you like to add the product (\w+) to your cart?": "Gostaria de adicionar o produto $1 em seu carrinho de compras?"
