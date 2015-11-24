@@ -1,7 +1,7 @@
 {
   "name": "ng-jedi-i18n",
   "version": "0.0.1",
-  "description": "i18n component written in angularjs.\u001b[D\u001b[J\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[A\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D",
+  "description": "i18n component written in AngularJs.",
   "main": "i18n.js",
   "repository": {
     "type": "git",
