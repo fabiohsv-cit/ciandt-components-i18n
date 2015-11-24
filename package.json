@@ -1,0 +1,36 @@
+{
+  "name": "ng-jedi-i18n",
+  "version": "0.0.1",
+  "description": "i18n component written in angularjs.\u001b[D\u001b[J\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[A\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D",
+  "main": "i18n.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jediproject/ng-jedi-i18n.git"
+  },
+  "keywords": [
+    "i18n",
+    "angularjs",
+    "jedi",
+    "jediproject",
+    "i18n",
+	  "locale",
+	  "localization",
+	  "internacionalization"
+  ],
+  "author": {
+    "name": "Fábio Henrique da Silva Viana",
+    "email": "fabioviana.bh@gmail.com",
+    "url": "http://jediproject.github.io"
+  },
+  "contributors": [    
+    "Bruno Camodeco dos Santos <brunocs@ciandt.com>",
+    "Henrique Silva Brighenti <henriqueb@ciandt.com>",
+    "Mateus Cerqueira <mateus_mcg@icloud.com>",
+    "Tanato Cartaxo <tanatopc@gmail.com>"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jediproject/ng-jedi-i18n/issues"
+  },
+  "homepage": "https://github.com/jediproject/ng-jedi-i18n#readme"
+}
