@@ -17,7 +17,6 @@
    ```html
    <script src='assets/libs/ng-jedi-i18n/i18n.js'></script>
    ```
-   - Note that the base directory used was assets/libs, you should change bower_components to assets/libs or move from bower_components to assets/libs with [Grunt](http://gruntjs.com/).
 * Include module dependency:
 
    ```javascript
