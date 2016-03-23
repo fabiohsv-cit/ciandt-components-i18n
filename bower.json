@@ -8,7 +8,7 @@
   "description": "i18n component written in angularjs",
   "main": ["i18n.js"],
   "dependencies": {
-	"ng-jedi-dialogs": "*"
+	"ng-jedi-dialogs": "#materialize"
   },
   "moduleType": [
     "globals"
