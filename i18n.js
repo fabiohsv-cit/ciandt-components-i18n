@@ -2,16 +2,19 @@
 
 (function (factory) {
     if (typeof define === 'function') {
-        define(['angular',
+        define(['moment',
+                'angular',
                 'angular-dynamic-locale'], factory);
     } else {
+        var _moment = moment;
         if (typeof module !== "undefined" && typeof exports !== "undefined" && module.exports === exports){
             module.exports = 'jedi.i18n';
             require('angular-dynamic-locale');
+            _moment = require('moment');
         }
-        return factory();
+        return factory(_moment);
     }
-}(function() {
+}(function(moment) {
 
     var tmhDynamicLocaleProviderRef;
 
