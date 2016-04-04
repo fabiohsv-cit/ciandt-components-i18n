@@ -13,16 +13,16 @@
     "jedi",
     "jediproject",
     "i18n",
-	  "locale",
-	  "localization",
-	  "internacionalization"
+    "locale",
+    "localization",
+    "internacionalization"
   ],
   "author": {
     "name": "Fábio Henrique da Silva Viana",
     "email": "fabioviana.bh@gmail.com",
     "url": "http://jediproject.github.io"
   },
-  "contributors": [    
+  "contributors": [
     "Bruno Camodeco dos Santos <brunocs@ciandt.com>",
     "Henrique Silva Brighenti <henriqueb@ciandt.com>",
     "Mateus Cerqueira <mateus_mcg@icloud.com>",
@@ -32,5 +32,12 @@
   "bugs": {
     "url": "https://github.com/jediproject/ng-jedi-i18n/issues"
   },
-  "homepage": "https://github.com/jediproject/ng-jedi-i18n#readme"
+  "homepage": "https://github.com/jediproject/ng-jedi-i18n#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-umd": "^0.2.0"
+  },
+  "dependencies": {
+    "angular-dynamic-locale": "^0.1.30"
+  }
 }

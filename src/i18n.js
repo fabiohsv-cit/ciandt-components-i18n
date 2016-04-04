@@ -1,13 +1,4 @@
-;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['angular', 'ng-jedi-utilities'], factory);
-  } else if (typeof exports === 'object') {
-    module.exports = factory(require('angular'), require('ng-jedi-utilities'));
-  } else {
-    root.ngJediI18n = factory(root.angular, root.ng-jedi-utilities);
-  }
-}(this, function(angular, ng-jedi-utilities) {
-"use strict";
+﻿"use strict";
 
 var tmhDynamicLocaleProviderRef;
 
@@ -269,6 +260,3 @@ angular.module("jedi.i18n", ['jedi.utilities', 'tmh.dynamicLocale']).constant('j
     tmhDynamicLocaleProviderRef = tmhDynamicLocaleProvider;
     tmhDynamicLocaleProvider.localeLocationPattern(LocalizeConfig.localePath);
 }]);
-
-return 'jedi.i18n';
-}));
