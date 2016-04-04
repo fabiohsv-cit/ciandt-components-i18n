@@ -16,7 +16,9 @@ gulp.task('umd', function() {
         return [{
           name: 'angular'
         }, {
-          name: 'ng-jedi-utilities'
+          name: 'ng-jedi-utilities',
+          param: 'utilities',
+          global: 'ngJediUtilities'
         }];
       },
     }))

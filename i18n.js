@@ -4,9 +4,9 @@
   } else if (typeof exports === 'object') {
     module.exports = factory(require('angular'), require('ng-jedi-utilities'));
   } else {
-    root.ngJediI18n = factory(root.angular, root.ng-jedi-utilities);
+    root.ngJediI18n = factory(root.angular, root.ngJediUtilities);
   }
-}(this, function(angular, ng-jedi-utilities) {
+}(this, function(angular, utilities) {
 "use strict";
 
 var tmhDynamicLocaleProviderRef;
