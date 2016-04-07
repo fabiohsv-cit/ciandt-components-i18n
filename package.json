@@ -38,6 +38,8 @@
     "gulp-umd": "^0.2.0"
   },
   "dependencies": {
-    "angular-dynamic-locale": "^0.1.30"
+    "angular-dynamic-locale": "^0.1.30",
+    "bluebird": "^3.3.4",
+    "lodash": "^4.8.2"
   }
 }

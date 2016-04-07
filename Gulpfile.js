@@ -15,10 +15,22 @@ gulp.task('umd', function() {
       dependencies: function() {
         return [{
           name: 'angular'
+        // }, {
+        //   name: 'ng-jedi-utilities',
+        //   param: 'utilities',
+        //   global: 'ngJediUtilities'
         }, {
-          name: 'ng-jedi-utilities',
-          param: 'utilities',
-          global: 'ngJediUtilities'
+          name: 'bluebird',
+          param: 'Promise',
+          global: 'Promise'
+        }, {
+          name: 'angular-dynamic-locale',
+          param: 'dynamicLocale',
+          global: 'dynamicLocale'
+        }, {
+          name: 'lodash',
+          param: '_',
+          global: '_'
         }];
       },
     }))
